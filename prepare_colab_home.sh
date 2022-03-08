@@ -17,12 +17,12 @@ curl -OL "https://github.com/black-eagle-1903/javapub/raw/main/doublecmd_config.
 rm doublecmd_config.7z
 
 # Create jdownloader.sh and give execute permision
-printf "cd jdownloader\n"$HOME/$(tar -tf jdk-17_linux-x64_bin.tar.gz|cut -d "/" -f1|sort|uniq)"/bin/java -jar JDownloader.jar">jdownloader.sh
+printf "#!/bin/bash\ncd jdownloader\n"$HOME/$(tar -tf jdk-17_linux-x64_bin.tar.gz|cut -d "/" -f1|sort|uniq)"/bin/java -jar JDownloader.jar">jdownloader.sh
 chmod u+x jdownloader.sh
 rm jdk-17_linux-x64_bin.tar.gz
 
 # Create sleep_loop.sh
-echo "for i in {1..14400};do echo -e \".\c\"; sleep 3; done">sleep_loop.sh
+echo "#!/bin/bash\nfor i in {1..14400};do echo -e \".\c\"; sleep 3; done">sleep_loop.sh
 chmod u+x sleep_loop.sh
 
 
