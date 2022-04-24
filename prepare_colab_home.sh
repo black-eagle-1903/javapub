@@ -8,8 +8,8 @@ curl -OL "https://github.com/black-eagle-1903/javapub/raw/main/jdownloader.7z.00
 rm jdownloader.7z.001 jdownloader.7z.002
 
 # Oracle JDK
-wget "https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz"
-tar -xvf jdk-17_linux-x64_bin.tar.gz
+wget "https://download.oracle.com/java/18/latest/jdk-18_linux-x64_bin.tar.gz"
+tar -xvf jdk-18_linux-x64_bin.tar.gz
 
 # Double Commander configuration
 curl -OL "https://github.com/black-eagle-1903/javapub/raw/main/doublecmd_config.7z"
@@ -17,9 +17,9 @@ curl -OL "https://github.com/black-eagle-1903/javapub/raw/main/doublecmd_config.
 rm doublecmd_config.7z
 
 # Create jdownloader.sh and give execute permision
-printf "#!/bin/bash\ncd jdownloader\n"$HOME/$(tar -tf jdk-17_linux-x64_bin.tar.gz|cut -d "/" -f1|sort|uniq)"/bin/java -jar JDownloader.jar">jdownloader.sh
+printf "#!/bin/bash\ncd jdownloader\n"$HOME/$(tar -tf jdk-18_linux-x64_bin.tar.gz|cut -d "/" -f1|sort|uniq)"/bin/java -jar JDownloader.jar">jdownloader.sh
 chmod u+x jdownloader.sh
-rm jdk-17_linux-x64_bin.tar.gz
+rm jdk-18_linux-x64_bin.tar.gz
 
 # Create my additional aliases
 echo '# My additional aliases'>> ~/.bashrc
