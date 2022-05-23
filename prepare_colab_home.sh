@@ -27,5 +27,5 @@ echo "alias g='/home/colab/git.sh'">> ~/.bashrc
 echo "alias scr='cd /home/colab/shell/colab'">> ~/.bashrc
 
 # Create sleep_loop.sh
-echo "#!/bin/bash\nfor i in {1..14400};do echo -e \".\c\"; sleep 3; done">sleep_loop.sh
+echo -e "#!/bin/bash\nfor i in {1..14400};do echo -e \".\c\"; sleep 3; done">sleep_loop.sh
 chmod u+x sleep_loop.sh
