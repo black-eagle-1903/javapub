@@ -38,7 +38,10 @@ chmod +x ~/.vnc/xstartup
 # set VNC password
 echo -e ${VNC_PWD}"\n"${VNC_PWD}"\n\n" | vncpasswd
 
-USER=root;HOME=/root;export USER HOME; vncserver -geometry ${VNC_GEOMETRY}
+USER=root
+HOME=/root
+export USER HOME
+vncserver -geometry ${VNC_GEOMETRY}
 
 # Download, unzip and remove ngrok stable zip file
 wget -q -c -nc ${NGROK_DOWNLOAD_URL}
