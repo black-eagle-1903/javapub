@@ -22,8 +22,8 @@ if [ -z "$1" ]; then
 fi
 }
 
-check_input_argument "${INPUT_VIDEO_FILE}" "ngrok auth string" 1
-check_input_argument "${AVERAGE_VIDEO_BITRATE}" "VNC password" 2
+check_input_argument "${NGROK_AUTH}" "ngrok auth string" 1
+check_input_argument "${VNC_PWD}" "VNC password" 2
 
 apt-get update
 apt-get install xfce4 xfce4-goodies xfce4-terminal xfonts-base xfonts-75dpi xfonts-100dpi
