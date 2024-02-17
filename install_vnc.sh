@@ -46,6 +46,7 @@ tar zxvf ${NGROK_DOWNLOAD_URL##*/}
 rm ${NGROK_DOWNLOAD_URL##*/}
 
 # Start ngrok tunnel
-./ngrok authtoken $NGROK_AUTH && ./ngrok tcp 5901 --region eu &
+./ngrok authtoken $NGROK_AUTH
+./ngrok tcp 5901 &
 
 curl ${NGROK_LOCAL_API_URL}
