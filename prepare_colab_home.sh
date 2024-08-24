@@ -1,6 +1,9 @@
 #!/bin/bash
 # Prepares colab linux home folder
-ORACLE_JDK_URL=https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
+# ORACLE_JDK_URL=https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
+LATEST_GRAAL_VM_RELEASE_URL='https://github.com/graalvm/graalvm-ce-builds/releases/latest'
+LATEST_GRAAL_VM_VERSION=$(basename $(curl -sw "%{redirect_url}" "${LATEST_GRAAL_VM_RELEASE_URL}"))
+LATEST_GRAAL_VM_ARCHIVE_URL='https://github.com/graalvm/graalvm-ce-builds/releases/download/'${LATEST_GRAAL_VM_VERSION}'/graalvm-community-'${LATEST_GRAAL_VM_VERSION}'_linux-x64_bin.tar.gz'
 
 # JDownloader
 curl -OL "https://github.com/black-eagle-1903/javapub/raw/main/jdownloader.7z.001"
@@ -9,8 +12,12 @@ curl -OL "https://github.com/black-eagle-1903/javapub/raw/main/jdownloader.7z.00
 rm jdownloader.7z.001 jdownloader.7z.002
 
 # Oracle JDK
-wget "${ORACLE_JDK_URL}"
-tar -xvf ${ORACLE_JDK_URL##*/}
+#wget "${ORACLE_JDK_URL}"
+#tar -xvf ${ORACLE_JDK_URL##*/}
+
+# GRAAL VM JDK
+wget "${LATEST_GRAAL_VM_ARCHIVE_URL}"
+tar -xvf ${LATEST_GRAAL_VM_ARCHIVE_URL##*/}
 
 # Double Commander configuration
 curl -OL "https://github.com/black-eagle-1903/javapub/raw/main/doublecmd_config.7z"
@@ -18,9 +25,11 @@ curl -OL "https://github.com/black-eagle-1903/javapub/raw/main/doublecmd_config.
 rm doublecmd_config.7z
 
 # Create jdownloader.sh and give execute permision
-printf "#!/bin/bash\ncd jdownloader\n"$HOME/$(tar -tf ${ORACLE_JDK_URL##*/}|cut -d "/" -f1|sort|uniq)"/bin/java -jar JDownloader.jar">jdownloader.sh
+#printf "#!/bin/bash\ncd jdownloader\n"$HOME/$(tar -tf ${ORACLE_JDK_URL##*/}|cut -d "/" -f1|sort|uniq)"/bin/java -jar JDownloader.jar">jdownloader.sh
+printf "#!/bin/bash\ncd jdownloader\n"$HOME/$(tar -tf ${LATEST_GRAAL_VM_ARCHIVE_URL##*/}|head -1|cut -d "/" -f1|sort|uniq)"/bin/java -jar JDownloader.jar">jdownloader.sh
 chmod u+x jdownloader.sh
-rm ${ORACLE_JDK_URL##*/}
+# rm ${ORACLE_JDK_URL##*/}
+rm ${LATEST_GRAAL_VM_ARCHIVE_URL##*/}
 
 # Create my additional aliases
 echo '# My additional aliases'>> ~/.bashrc
