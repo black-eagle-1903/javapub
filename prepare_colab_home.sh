@@ -27,7 +27,7 @@ rm ${LATEST_GRAAL_VM_ARCHIVE_URL##*/}
 
 # Create my additional aliases
 echo '# My additional aliases'>> ~/.bashrc
-echo "alias g='/home/colab/git.sh'">> ~/.bashrc
+echo "alias g='/home/colab/shell/colab/git/git.sh'">> ~/.bashrc
 echo "alias scr='cd /home/colab/shell/colab'">> ~/.bashrc
 
 # Create sleep_loop.sh
